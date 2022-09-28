@@ -10,41 +10,25 @@ import Typography from "@mui/material/Typography";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import SvgIcon from "@mui/material/SvgIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const drawerWidth = 240;
 
 const categoryItems = [
   {
     text: "Popular",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/movie--v1.png"
-        alt="Popular"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-film"></i>,
     path: "/",
   },
   {
     text: "Top Rated",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/star--v1.png"
-        alt="Top Rated"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-star"></i>,
     path: "/",
   },
   {
     text: "Upcoming",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/movie-theater--v1.png"
-        alt="Upcoming"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-ticket"></i>,
     path: "/",
   },
 ];
@@ -52,211 +36,97 @@ const categoryItems = [
 const genreItems = [
   {
     text: "Action",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/action.png"
-        alt="Action"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-siren-on"></i>,
     path: "/",
   },
   {
     text: "Adventure",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/compass--v1.png"
-        alt="Adventure"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-compass"></i>,
     path: "/",
   },
   {
     text: "Animation",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/animation--v1.png"
-        alt="Animation"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-palette"></i>,
     path: "/",
   },
   {
     text: "Comedy",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/comedy--v1.png"
-        alt="Comedy"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-face-grin-tears"></i>,
     path: "/",
   },
   {
     text: "Crime",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/crime--v1.png"
-        alt="Crime"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-handcuffs"></i>,
     path: "/",
   },
   {
     text: "Documentary",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/documentary--v1.png"
-        alt="Documentary"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-camera-movie"></i>,
     path: "/",
   },
   {
     text: "Drama",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/drama--v1.png"
-        alt="Drama"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-masks-theater"></i>,
     path: "/",
   },
   {
     text: "Family",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/family--v1.png"
-        alt="Family"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-family-pants"></i>,
     path: "/",
   },
   {
     text: "Fantasy",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/fantasy--v1.png"
-        alt="Fantasy"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-sharp fa-solid fa-wand-sparkles"></i>,
     path: "/",
   },
   {
     text: "History",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/historical--v1.png"
-        alt="History"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-hourglass-half"></i>,
     path: "/",
   },
   {
     text: "Horror",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/horror--v1.png"
-        alt="Horror"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-knife-kitchen"></i>,
     path: "/",
   },
   {
     text: "Music",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/music--v1.png"
-        alt="Music"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-music"></i>,
     path: "/",
   },
   {
     text: "Mystery",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/spy--v1.png"
-        alt="Mystery"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-user-secret"></i>,
     path: "/",
   },
   {
     text: "Romance",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/romance--v1.png"
-        alt="Romance"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-heart"></i>,
     path: "/",
   },
   {
     text: "Science Fiction",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/sci-fi--v1.png"
-        alt="Science Fiction"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-robot-astromech"></i>,
     path: "/",
   },
   {
     text: "TV Movie",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/tv--v1.png"
-        alt="TV Movie"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-tv"></i>,
     path: "/",
   },
   {
     text: "Thriller",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/thriller--v1.png"
-        alt="Thriller"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-skull"></i>,
     path: "/",
   },
   {
     text: "War",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/battle--v1.png"
-        alt="War"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-swords"></i>,
     path: "/",
   },
   {
     text: "Western",
-    icon: (
-      <img
-        src="https://img.icons8.com/ios/100/000000/western--v1.png"
-        alt="Western"
-        width="30"
-      />
-    ),
+    icon: <i class="fa-solid fa-user-cowboy"></i>,
     path: "/",
   },
 ];
@@ -268,11 +138,10 @@ const DrawerLeft = () => {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          borderRightWidth: 4,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            borderRightWidth: 4,
+            borderRightWidth: 0,
           },
         }}
         variant="permanent"
@@ -285,7 +154,10 @@ const DrawerLeft = () => {
           }}
           alignItems="center"
         >
-          <Typography>MovieDude</Typography>
+          <Typography>
+            MovieDude
+            <FontAwesomeIcon icon="fa-light fa-film" />
+          </Typography>
         </Toolbar>
         <List
           sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
@@ -299,7 +171,11 @@ const DrawerLeft = () => {
         >
           {categoryItems.map((item) => (
             <ListItem key={item.text} button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon>
+                <SvgIcon color="primary" fontSize="large">
+                  {item.icon}
+                </SvgIcon>
+              </ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItem>
           ))}
@@ -317,7 +193,11 @@ const DrawerLeft = () => {
         >
           {genreItems.map((item) => (
             <ListItem key={item.text} button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon>
+                <SvgIcon color="primary" fontSize="large">
+                  {item.icon}
+                </SvgIcon>
+              </ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItem>
           ))}
