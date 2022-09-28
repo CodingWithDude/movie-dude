@@ -1,9 +1,8 @@
 import React from "react";
 import ListSubheader from "@mui/material/ListSubheader";
-import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
@@ -11,7 +10,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import SvgIcon from "@mui/material/SvgIcon";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const drawerWidth = 240;
 
@@ -133,11 +131,9 @@ const genreItems = [
 
 const DrawerLeft = () => {
   return (
-    <Box>
+    <Container>
       <Drawer
         sx={{
-          width: drawerWidth,
-          flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
@@ -149,18 +145,12 @@ const DrawerLeft = () => {
       >
         <Toolbar
           sx={{
-            display: "flex",
             justifyContent: "center",
           }}
-          alignItems="center"
         >
-          <Typography>
-            MovieDude
-            <FontAwesomeIcon icon="fa-light fa-film" />
-          </Typography>
+          <Typography>MovieDude</Typography>
         </Toolbar>
         <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
           component="nav"
           aria-labelledby="nested-list-subheader"
           subheader={
@@ -182,7 +172,6 @@ const DrawerLeft = () => {
         </List>
         <Divider sx={{ borderBottomWidth: 4 }} />
         <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
           component="nav"
           aria-labelledby="nested-list-subheader"
           subheader={
@@ -203,7 +192,7 @@ const DrawerLeft = () => {
           ))}
         </List>
       </Drawer>
-    </Box>
+    </Container>
   );
 };
 

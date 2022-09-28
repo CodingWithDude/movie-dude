@@ -9,12 +9,14 @@ import theme from "./styles/Styles";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Layout />
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Home />}></Route>
-        </Routes>
-      </Router>
+      <CssBaseline />
+      <Layout>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<Home />}></Route>
+          </Routes>
+        </Router>
+      </Layout>
     </ThemeProvider>
   );
 };
