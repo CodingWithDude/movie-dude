@@ -1,18 +1,15 @@
-import React from "react";
-import Box from "@mui/material/Box";
+import { Box, styled, Typography } from "@mui/material";
 
 const MainContent = ({ windowLength }) => {
+  const StyledBox = styled(Box)({
+    display: "flex",
+    alignSelf: "flex-end",
+    width: windowLength >= 600 ? "calc(100% - 240px)" : "100%",
+  });
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignSelf: "flex-end",
-        width: windowLength >= 600 ? "calc(100% - 240px)" : "100%",
-      }}
-      p={3}
-    >
-      MainContent
-    </Box>
+    <StyledBox p={2}>
+      <Typography>MainContent</Typography>
+    </StyledBox>
   );
 };
 

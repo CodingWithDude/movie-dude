@@ -193,16 +193,3 @@ const Sidebar = ({ windowLength }) => {
 };
 
 export default Sidebar;
-
-// import React from "react";
-// import { Box } from "@mui/system";
-
-// const Sidebar = () => {
-//   return (
-//     <Box flex={1} sx={{ display: { xs: "none", sm: "block" } }}>
-//       Sidebar
-//     </Box>
-//   );
-// };
-
-// export default Sidebar;
