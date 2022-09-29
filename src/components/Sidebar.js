@@ -1,6 +1,6 @@
 import React from "react";
 import ListSubheader from "@mui/material/ListSubheader";
-import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,17 +16,17 @@ const drawerWidth = 240;
 const categoryItems = [
   {
     text: "Popular",
-    icon: <i class="fa-solid fa-film"></i>,
+    icon: <i className="fa-solid fa-film"></i>,
     path: "/",
   },
   {
     text: "Top Rated",
-    icon: <i class="fa-solid fa-star"></i>,
+    icon: <i className="fa-solid fa-star"></i>,
     path: "/",
   },
   {
     text: "Upcoming",
-    icon: <i class="fa-solid fa-ticket"></i>,
+    icon: <i className="fa-solid fa-ticket"></i>,
     path: "/",
   },
 ];
@@ -34,104 +34,104 @@ const categoryItems = [
 const genreItems = [
   {
     text: "Action",
-    icon: <i class="fa-solid fa-siren-on"></i>,
+    icon: <i className="fa-solid fa-siren-on"></i>,
     path: "/",
   },
   {
     text: "Adventure",
-    icon: <i class="fa-solid fa-compass"></i>,
+    icon: <i className="fa-solid fa-compass"></i>,
     path: "/",
   },
   {
     text: "Animation",
-    icon: <i class="fa-solid fa-palette"></i>,
+    icon: <i className="fa-solid fa-palette"></i>,
     path: "/",
   },
   {
     text: "Comedy",
-    icon: <i class="fa-solid fa-face-grin-tears"></i>,
+    icon: <i className="fa-solid fa-face-grin-tears"></i>,
     path: "/",
   },
   {
     text: "Crime",
-    icon: <i class="fa-solid fa-handcuffs"></i>,
+    icon: <i className="fa-solid fa-handcuffs"></i>,
     path: "/",
   },
   {
     text: "Documentary",
-    icon: <i class="fa-solid fa-camera-movie"></i>,
+    icon: <i className="fa-solid fa-camera-movie"></i>,
     path: "/",
   },
   {
     text: "Drama",
-    icon: <i class="fa-solid fa-masks-theater"></i>,
+    icon: <i className="fa-solid fa-masks-theater"></i>,
     path: "/",
   },
   {
     text: "Family",
-    icon: <i class="fa-solid fa-family-pants"></i>,
+    icon: <i className="fa-solid fa-family-pants"></i>,
     path: "/",
   },
   {
     text: "Fantasy",
-    icon: <i class="fa-sharp fa-solid fa-wand-sparkles"></i>,
+    icon: <i className="fa-sharp fa-solid fa-wand-sparkles"></i>,
     path: "/",
   },
   {
     text: "History",
-    icon: <i class="fa-solid fa-hourglass-half"></i>,
+    icon: <i className="fa-solid fa-hourglass-half"></i>,
     path: "/",
   },
   {
     text: "Horror",
-    icon: <i class="fa-solid fa-knife-kitchen"></i>,
+    icon: <i className="fa-solid fa-knife-kitchen"></i>,
     path: "/",
   },
   {
     text: "Music",
-    icon: <i class="fa-solid fa-music"></i>,
+    icon: <i className="fa-solid fa-music"></i>,
     path: "/",
   },
   {
     text: "Mystery",
-    icon: <i class="fa-solid fa-user-secret"></i>,
+    icon: <i className="fa-solid fa-user-secret"></i>,
     path: "/",
   },
   {
     text: "Romance",
-    icon: <i class="fa-solid fa-heart"></i>,
+    icon: <i className="fa-solid fa-heart"></i>,
     path: "/",
   },
   {
     text: "Science Fiction",
-    icon: <i class="fa-solid fa-robot-astromech"></i>,
+    icon: <i className="fa-solid fa-robot-astromech"></i>,
     path: "/",
   },
   {
     text: "TV Movie",
-    icon: <i class="fa-solid fa-tv"></i>,
+    icon: <i className="fa-solid fa-tv"></i>,
     path: "/",
   },
   {
     text: "Thriller",
-    icon: <i class="fa-solid fa-skull"></i>,
+    icon: <i className="fa-solid fa-skull"></i>,
     path: "/",
   },
   {
     text: "War",
-    icon: <i class="fa-solid fa-swords"></i>,
+    icon: <i className="fa-solid fa-swords"></i>,
     path: "/",
   },
   {
     text: "Western",
-    icon: <i class="fa-solid fa-user-cowboy"></i>,
+    icon: <i className="fa-solid fa-user-cowboy"></i>,
     path: "/",
   },
 ];
 
 const DrawerLeft = () => {
   return (
-    <Container>
+    <Box flex={1} sx={{ display: { xs: "none", sm: "block" } }}>
       <Drawer
         sx={{
           "& .MuiDrawer-paper": {
@@ -192,8 +192,21 @@ const DrawerLeft = () => {
           ))}
         </List>
       </Drawer>
-    </Container>
+    </Box>
   );
 };
 
 export default DrawerLeft;
+
+// import React from "react";
+// import { Box } from "@mui/system";
+
+// const Sidebar = () => {
+//   return (
+//     <Box flex={1} sx={{ display: { xs: "none", sm: "block" } }}>
+//       Sidebar
+//     </Box>
+//   );
+// };
+
+// export default Sidebar;

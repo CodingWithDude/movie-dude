@@ -1,23 +1,36 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "@mui/material/styles";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import CssBaseline from "@mui/material/CssBaseline";
-import theme from "./styles/Styles";
+import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import MainContent from "./components/MainContent";
+import { Box, Toolbar } from "@mui/material";
 
 const App = () => {
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, [windowSize]);
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Layout>
-        <Router>
-          <Routes>
-            <Route exact path="/" element={<Home />}></Route>
-          </Routes>
-        </Router>
-      </Layout>
-    </ThemeProvider>
+    <Box display="flex" flexDirection="column">
+      <Sidebar />
+      <Navbar windowLength={window.innerWidth} />
+      <Toolbar></Toolbar>
+      <MainContent windowLength={window.innerWidth} />
+    </Box>
   );
 };
 
