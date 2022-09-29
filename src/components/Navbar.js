@@ -1,13 +1,12 @@
 import { AppBar, styled, Toolbar } from "@mui/material";
 
 const Navbar = ({ windowLength }) => {
-  const StyledAppBar = styled(AppBar)({});
+  const StyledAppBar = styled(AppBar)({
+    width: windowLength >= 600 ? "calc(100% - 240px)" : "100%",
+  });
 
   return (
-    <StyledAppBar
-      // width 240px value from drawerWidth
-      sx={{ width: windowLength >= 600 ? "calc(100% - 240px)" : "100%" }}
-    >
+    <StyledAppBar>
       <Toolbar>Navbar</Toolbar>
     </StyledAppBar>
   );

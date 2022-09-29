@@ -1,7 +1,6 @@
 import React from "react";
 import ListSubheader from "@mui/material/ListSubheader";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
+import { Drawer, styled } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
@@ -129,74 +128,71 @@ const genreItems = [
   },
 ];
 
-const DrawerLeft = () => {
+const Sidebar = ({ windowLength }) => {
+  const StyledDrawer = styled(Drawer)({
+    display: windowLength >= 600 ? "block" : "none",
+    "& .MuiDrawer-paper": {
+      width: drawerWidth,
+      boxSizing: "border-box",
+      borderRightWidth: 0,
+    },
+  });
+
   return (
-    <Box flex={1} sx={{ display: { xs: "none", sm: "block" } }}>
-      <Drawer
+    <StyledDrawer variant="permanent" anchor="left">
+      <Toolbar
         sx={{
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-            borderRightWidth: 0,
-          },
+          justifyContent: "center",
         }}
-        variant="permanent"
-        anchor="left"
       >
-        <Toolbar
-          sx={{
-            justifyContent: "center",
-          }}
-        >
-          <Typography>MovieDude</Typography>
-        </Toolbar>
-        <List
-          component="nav"
-          aria-labelledby="nested-list-subheader"
-          subheader={
-            <ListSubheader component="div" id="nested-list-subheader">
-              Categories
-            </ListSubheader>
-          }
-        >
-          {categoryItems.map((item) => (
-            <ListItem key={item.text} button>
-              <ListItemIcon>
-                <SvgIcon color="primary" fontSize="large">
-                  {item.icon}
-                </SvgIcon>
-              </ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider sx={{ borderBottomWidth: 4 }} />
-        <List
-          component="nav"
-          aria-labelledby="nested-list-subheader"
-          subheader={
-            <ListSubheader component="div" id="nested-list-subheader">
-              Genres
-            </ListSubheader>
-          }
-        >
-          {genreItems.map((item) => (
-            <ListItem key={item.text} button>
-              <ListItemIcon>
-                <SvgIcon color="primary" fontSize="large">
-                  {item.icon}
-                </SvgIcon>
-              </ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </Box>
+        <Typography>MovieDude</Typography>
+      </Toolbar>
+      <List
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Categories
+          </ListSubheader>
+        }
+      >
+        {categoryItems.map((item) => (
+          <ListItem key={item.text} button>
+            <ListItemIcon>
+              <SvgIcon color="primary" fontSize="large">
+                {item.icon}
+              </SvgIcon>
+            </ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider sx={{ borderBottomWidth: 4 }} />
+      <List
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Genres
+          </ListSubheader>
+        }
+      >
+        {genreItems.map((item) => (
+          <ListItem key={item.text} button>
+            <ListItemIcon>
+              <SvgIcon color="primary" fontSize="large">
+                {item.icon}
+              </SvgIcon>
+            </ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
+      </List>
+    </StyledDrawer>
   );
 };
 
-export default DrawerLeft;
+export default Sidebar;
 
 // import React from "react";
 // import { Box } from "@mui/system";

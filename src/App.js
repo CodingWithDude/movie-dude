@@ -3,8 +3,13 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import MainContent from "./components/MainContent";
 import { Box, Toolbar } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import Styles from "./styles/Styles";
 
 const App = () => {
+  const theme = Styles;
+
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
   function getWindowSize() {
@@ -25,12 +30,15 @@ const App = () => {
   }, [windowSize]);
 
   return (
-    <Box display="flex" flexDirection="column">
-      <Sidebar />
-      <Navbar windowLength={window.innerWidth} />
-      <Toolbar></Toolbar>
-      <MainContent windowLength={window.innerWidth} />
-    </Box>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box display="flex" flexDirection="column">
+        <Sidebar windowLength={window.innerWidth} />
+        <Navbar windowLength={window.innerWidth} />
+        <Toolbar></Toolbar>
+        <MainContent windowLength={window.innerWidth} />
+      </Box>
+    </ThemeProvider>
   );
 };
 

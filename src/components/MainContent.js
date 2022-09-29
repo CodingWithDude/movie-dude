@@ -7,9 +7,9 @@ const MainContent = ({ windowLength }) => {
       sx={{
         display: "flex",
         alignSelf: "flex-end",
-        border: "1px solid black",
         width: windowLength >= 600 ? "calc(100% - 240px)" : "100%",
       }}
+      p={3}
     >
       MainContent
     </Box>
