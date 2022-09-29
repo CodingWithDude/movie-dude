@@ -60,6 +60,7 @@ const App = () => {
           drawerWidth={drawerWidth}
           setSearchValue={setSearchValue}
           setSearchSubmitted={setSearchSubmitted}
+          setMovies={setMovies}
         />
         {/* AppBar */}
         <AppBar

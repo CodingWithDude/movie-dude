@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ListSubheader from "@mui/material/ListSubheader";
 import { Drawer, styled } from "@mui/material";
 import Divider from "@mui/material/Divider";
@@ -32,106 +32,102 @@ const genreItems = [
   {
     text: "Action",
     icon: <i className="fa-solid fa-siren-on"></i>,
-    path: "/",
+    id: 28,
   },
   {
     text: "Adventure",
     icon: <i className="fa-solid fa-compass"></i>,
-    path: "/",
+    id: 12,
   },
   {
     text: "Animation",
     icon: <i className="fa-solid fa-palette"></i>,
-    path: "/",
+    id: 16,
   },
   {
     text: "Comedy",
     icon: <i className="fa-solid fa-face-grin-tears"></i>,
-    path: "/",
+    id: 35,
   },
   {
     text: "Crime",
     icon: <i className="fa-solid fa-handcuffs"></i>,
-    path: "/",
+    id: 80,
   },
   {
     text: "Documentary",
     icon: <i className="fa-solid fa-camera-movie"></i>,
-    path: "/",
+    id: 99,
   },
   {
     text: "Drama",
     icon: <i className="fa-solid fa-masks-theater"></i>,
-    path: "/",
+    id: 18,
   },
   {
     text: "Family",
     icon: <i className="fa-solid fa-family-pants"></i>,
-    path: "/",
+    id: 10751,
   },
   {
     text: "Fantasy",
     icon: <i className="fa-sharp fa-solid fa-wand-sparkles"></i>,
-    path: "/",
+    id: 14,
   },
   {
     text: "History",
     icon: <i className="fa-solid fa-hourglass-half"></i>,
-    path: "/",
+    id: 36,
   },
   {
     text: "Horror",
     icon: <i className="fa-solid fa-knife-kitchen"></i>,
-    path: "/",
+    id: 27,
   },
   {
     text: "Music",
     icon: <i className="fa-solid fa-music"></i>,
-    path: "/",
+    id: 10402,
   },
   {
     text: "Mystery",
     icon: <i className="fa-solid fa-user-secret"></i>,
-    path: "/",
+    id: 9648,
   },
   {
     text: "Romance",
     icon: <i className="fa-solid fa-heart"></i>,
-    path: "/",
+    id: 10749,
   },
   {
     text: "Science Fiction",
     icon: <i className="fa-solid fa-robot-astromech"></i>,
-    path: "/",
+    id: 878,
   },
   {
     text: "TV Movie",
     icon: <i className="fa-solid fa-tv"></i>,
-    path: "/",
+    id: 10770,
   },
   {
     text: "Thriller",
     icon: <i className="fa-solid fa-skull"></i>,
-    path: "/",
+    id: 53,
   },
   {
     text: "War",
     icon: <i className="fa-solid fa-swords"></i>,
-    path: "/",
+    id: 10752,
   },
   {
     text: "Western",
     icon: <i className="fa-solid fa-user-cowboy"></i>,
-    path: "/",
+    id: 37,
   },
 ];
 
-const Sidebar = ({
-  windowLength,
-  drawerWidth,
-  setSearchValue,
-  setSearchSubmitted,
-}) => {
+const Sidebar = ({ windowLength, drawerWidth, setMovies }) => {
+  const [genreSearchValue, setGenreSearchValue] = useState(null);
   const StyledDrawer = styled(Drawer)({
     display: windowLength >= 600 ? "block" : "none",
     "& .MuiDrawer-paper": {
@@ -140,6 +136,23 @@ const Sidebar = ({
       borderRightWidth: 0,
     },
   });
+
+  const getGenreRequest = async () => {
+    const url = `https://api.themoviedb.org/3/discover/movie?api_key=bd248f777e0f5aaa9962bae98c088f34&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreSearchValue}&with_watch_monetization_types=flatrate`;
+    const response = await fetch(url);
+    const responseJson = await response.json();
+    console.log(responseJson.results);
+    if (responseJson.results) {
+      setMovies(responseJson.results);
+    }
+  };
+
+  useEffect(() => {
+    if (genreSearchValue) {
+      getGenreRequest(genreSearchValue);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [genreSearchValue]);
 
   return (
     <StyledDrawer variant="permanent" anchor="left">
@@ -181,7 +194,11 @@ const Sidebar = ({
         }
       >
         {genreItems.map((item) => (
-          <ListItem key={item.text} button>
+          <ListItem
+            onClick={() => setGenreSearchValue(item.id)}
+            key={item.text}
+            button
+          >
             <ListItemIcon>
               <SvgIcon color="primary" fontSize="large">
                 {item.icon}

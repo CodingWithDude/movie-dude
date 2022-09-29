@@ -5,7 +5,12 @@ const MovieList = ({ movies }) => {
     <>
       {movies.map((movie, index) => (
         <div key={index}>
-          {movie.Poster !== "N/A" && <img src={movie.Poster} alt="movie" />}
+          {movie.poster_path !== null && (
+            <img
+              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              alt="movie"
+            />
+          )}
         </div>
       ))}
     </>
