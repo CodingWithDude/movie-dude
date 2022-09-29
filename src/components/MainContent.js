@@ -1,6 +1,7 @@
 import { Box, styled, Typography } from "@mui/material";
+import MovieList from "./MovieList";
 
-const MainContent = ({ windowLength, drawerWidth }) => {
+const MainContent = ({ windowLength, drawerWidth, movies }) => {
   const StyledBox = styled(Box)({
     display: "flex",
     alignSelf: "flex-end",
@@ -8,8 +9,8 @@ const MainContent = ({ windowLength, drawerWidth }) => {
   });
 
   return (
-    <StyledBox p={2}>
-      <Typography>MainContent</Typography>
+    <StyledBox p={2} sx={{ display: "flex", flexDirection: "column" }}>
+      <MovieList movies={movies}></MovieList>
     </StyledBox>
   );
 };

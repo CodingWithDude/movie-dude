@@ -126,7 +126,12 @@ const genreItems = [
   },
 ];
 
-const Sidebar = ({ windowLength, drawerWidth }) => {
+const Sidebar = ({
+  windowLength,
+  drawerWidth,
+  setSearchValue,
+  setSearchSubmitted,
+}) => {
   const StyledDrawer = styled(Drawer)({
     display: windowLength >= 600 ? "block" : "none",
     "& .MuiDrawer-paper": {
