@@ -10,8 +10,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import SvgIcon from "@mui/material/SvgIcon";
 
-const drawerWidth = 240;
-
 const categoryItems = [
   {
     text: "Popular",
@@ -128,7 +126,7 @@ const genreItems = [
   },
 ];
 
-const Sidebar = ({ windowLength }) => {
+const Sidebar = ({ windowLength, drawerWidth }) => {
   const StyledDrawer = styled(Drawer)({
     display: windowLength >= 600 ? "block" : "none",
     "& .MuiDrawer-paper": {

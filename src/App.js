@@ -29,14 +29,20 @@ const App = () => {
     };
   }, [windowSize]);
 
+  // Sidebar width
+  const drawerWidth = 240;
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box display="flex" flexDirection="column">
-        <Sidebar windowLength={window.innerWidth} />
-        <Navbar windowLength={window.innerWidth} />
+        <Sidebar windowLength={window.innerWidth} drawerWidth={drawerWidth} />
+        <Navbar windowLength={window.innerWidth} drawerWidth={drawerWidth} />
         <Toolbar></Toolbar>
-        <MainContent windowLength={window.innerWidth} />
+        <MainContent
+          windowLength={window.innerWidth}
+          drawerWidth={drawerWidth}
+        />
       </Box>
     </ThemeProvider>
   );
