@@ -160,12 +160,8 @@ const Sidebar = ({ windowLength, drawerWidth, setMovies }) => {
   };
 
   useEffect(() => {
-    if (url) {
-      getGenreRequest(url);
-      console.log(data);
-      setMovies(data);
-    }
-  }, [url]);
+    getGenreRequest("popular");
+  }, []);
 
   return (
     <StyledDrawer variant="permanent" anchor="left">

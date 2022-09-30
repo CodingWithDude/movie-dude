@@ -6,38 +6,63 @@ import { CardActionArea, Box, dividerClasses } from "@mui/material";
 
 const MovieList = ({ movies }) => {
   return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: "18px",
-          justifyContent: "center",
-          overflowX: "scroll",
-        }}
-      >
-        {movies &&
-          movies.map((movie, index) => (
-            <Card sx={{ minWidth: "150px", maxWidth: "200px" }} key={index}>
-              <CardActionArea>
-                {movie.poster_path !== null && (
-                  <CardMedia
-                    component="img"
-                    height="fit-content"
-                    image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    alt="movie"
-                  />
-                )}
-                <CardContent>
-                  <Typography variant="h6" component="div">
-                    {movie.title !== null && movie.title}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))}
-      </Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
+      {movies &&
+        movies.map((movie, index) => (
+          <Card
+            elevation={0}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "250px",
+              textOverflow: "ellipsis",
+              padding: "10px",
+            }}
+            key={index}
+          >
+            {movie.poster_path !== null && (
+              <CardMedia
+                component="img"
+                height="fit-content"
+                image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                alt="movie"
+                sx={{
+                  width: "225px",
+                  height: "100%",
+                  borderRadius: "30px",
+                  "&:hover": {
+                    cursor: "pointer",
+                    transform: "scale(1.03)",
+                  },
+                }}
+              />
+            )}
+
+            <Typography
+              sx={{
+                width: "225px",
+                paddingTop: "10px",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textAlign: "center",
+                fontWeight: "bold",
+              }}
+              variant="p"
+            >
+              {movie.title}
+            </Typography>
+          </Card>
+        ))}
     </Box>
   );
 };
