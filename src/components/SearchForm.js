@@ -23,8 +23,8 @@ export default function InputWithIcon({
         "& > :not(style)": { m: 1 },
       }}
     >
-      <FormControl onSubmit={handleSubmit} variant="standard">
-        <form name="searchForm">
+      <FormControl variant="standard">
+        <form onSubmit={handleSubmit} name="searchForm">
           <Input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}

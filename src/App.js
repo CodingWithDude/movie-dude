@@ -18,11 +18,11 @@ const App = () => {
   const drawerWidth = 240;
 
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=8b78faef`;
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=bd248f777e0f5aaa9962bae98c088f34&language=en-US&query=${searchValue}&page=1&include_adult=false`;
     const response = await fetch(url);
     const responseJson = await response.json();
-    if (responseJson.Search) {
-      setMovies(responseJson.Search);
+    if (responseJson.results) {
+      setMovies(responseJson.results);
       setSearchSubmitted(false);
     }
   };

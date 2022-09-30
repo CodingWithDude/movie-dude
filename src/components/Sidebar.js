@@ -9,22 +9,23 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import SvgIcon from "@mui/material/SvgIcon";
+import useFetch from "../hooks/useFetch";
 
 const categoryItems = [
   {
     text: "Popular",
     icon: <i className="fa-solid fa-film"></i>,
-    path: "/",
+    id: "popular",
   },
   {
     text: "Top Rated",
     icon: <i className="fa-solid fa-star"></i>,
-    path: "/",
+    id: "top_rated",
   },
   {
     text: "Upcoming",
     icon: <i className="fa-solid fa-ticket"></i>,
-    path: "/",
+    id: "upcoming",
   },
 ];
 
@@ -127,7 +128,8 @@ const genreItems = [
 ];
 
 const Sidebar = ({ windowLength, drawerWidth, setMovies }) => {
-  const [genreSearchValue, setGenreSearchValue] = useState(null);
+  const [url, setUrl] = useState(null);
+  const { data } = useFetch(url);
   const StyledDrawer = styled(Drawer)({
     display: windowLength >= 600 ? "block" : "none",
     "& .MuiDrawer-paper": {
@@ -137,22 +139,33 @@ const Sidebar = ({ windowLength, drawerWidth, setMovies }) => {
     },
   });
 
-  const getGenreRequest = async () => {
-    const url = `https://api.themoviedb.org/3/discover/movie?api_key=bd248f777e0f5aaa9962bae98c088f34&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreSearchValue}&with_watch_monetization_types=flatrate`;
-    const response = await fetch(url);
+  const getGenreRequest = async (id) => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=bd248f777e0f5aaa9962bae98c088f34&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${id}&with_watch_monetization_types=flatrate`
+    );
     const responseJson = await response.json();
-    console.log(responseJson.results);
+    if (responseJson.results) {
+      setMovies(responseJson.results);
+    }
+  };
+
+  const getCategoryRequest = async (id) => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=bd248f777e0f5aaa9962bae98c088f34&language=en-US&page=1`
+    );
+    const responseJson = await response.json();
     if (responseJson.results) {
       setMovies(responseJson.results);
     }
   };
 
   useEffect(() => {
-    if (genreSearchValue) {
-      getGenreRequest(genreSearchValue);
+    if (url) {
+      getGenreRequest(url);
+      console.log(data);
+      setMovies(data);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [genreSearchValue]);
+  }, [url]);
 
   return (
     <StyledDrawer variant="permanent" anchor="left">
@@ -173,7 +186,11 @@ const Sidebar = ({ windowLength, drawerWidth, setMovies }) => {
         }
       >
         {categoryItems.map((item) => (
-          <ListItem key={item.text} button>
+          <ListItem
+            onClick={() => getCategoryRequest(item.id)}
+            key={item.text}
+            button
+          >
             <ListItemIcon>
               <SvgIcon color="primary" fontSize="large">
                 {item.icon}
@@ -195,7 +212,7 @@ const Sidebar = ({ windowLength, drawerWidth, setMovies }) => {
       >
         {genreItems.map((item) => (
           <ListItem
-            onClick={() => setGenreSearchValue(item.id)}
+            onClick={() => getGenreRequest(item.id)}
             key={item.text}
             button
           >
