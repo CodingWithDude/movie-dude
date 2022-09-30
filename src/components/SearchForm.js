@@ -19,33 +19,34 @@ export default function InputWithIcon({
 
   return (
     <Box
+      component="form"
       sx={{
-        "& > :not(style)": { m: 1 },
+        "& > :not(style)": { m: 1, width: "25ch" },
       }}
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      name="searchForm"
     >
-      <FormControl variant="standard">
-        <form onSubmit={handleSubmit} name="searchForm">
-          <Input
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            name="searchInput"
-            placeholder="Search..."
-            spellCheck="false"
-            autoComplete="off"
-            id="input-with-icon-adornment"
-            startAdornment={
-              <InputAdornment position="start">
-                <SvgIcon
-                  sx={{ "&:hover": { cursor: "pointer" } }}
-                  onClick={handleSubmit}
-                >
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </SvgIcon>
-              </InputAdornment>
-            }
-          />
-        </form>
-      </FormControl>
+      <Input
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        name="searchInput"
+        placeholder="Search..."
+        spellCheck="false"
+        autoComplete="off"
+        id="input-with-icon-adornment"
+        startAdornment={
+          <InputAdornment position="start">
+            <SvgIcon
+              sx={{ "&:hover": { cursor: "pointer" } }}
+              onClick={handleSubmit}
+            >
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </SvgIcon>
+          </InputAdornment>
+        }
+      />
     </Box>
   );
 }

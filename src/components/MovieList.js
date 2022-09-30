@@ -2,7 +2,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, Box } from "@mui/material";
+import { CardActionArea, Box, dividerClasses } from "@mui/material";
 
 const MovieList = ({ movies }) => {
   return (
@@ -10,26 +10,16 @@ const MovieList = ({ movies }) => {
       <Box
         sx={{
           display: "flex",
-          paddingBottom: "18px",
-          justifyContent: "center",
-        }}
-      >
-        <Typography variant="h4" component="h1">
-          Heading
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
           gap: "18px",
           justifyContent: "center",
+          overflowX: "scroll",
         }}
       >
         {movies &&
           movies.map((movie, index) => (
-            <Card sx={{ width: 345 }} key={index}>
+            <Card sx={{ minWidth: "150px", maxWidth: "200px" }} key={index}>
               <CardActionArea>
                 {movie.poster_path !== null && (
                   <CardMedia
@@ -40,11 +30,8 @@ const MovieList = ({ movies }) => {
                   />
                 )}
                 <CardContent>
-                  <Typography variant="h5" component="div">
+                  <Typography variant="h6" component="div">
                     {movie.title !== null && movie.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {movie.overview !== null && movie.overview}
                   </Typography>
                 </CardContent>
               </CardActionArea>

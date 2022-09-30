@@ -1,6 +1,6 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import SearchForm from "./components/SearchForm";
-
 import Sidebar from "./components/Sidebar";
 import MainContent from "./components/MainContent";
 import { Box, Toolbar, AppBar, styled } from "@mui/material";
@@ -14,6 +14,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchSubmitted, setSearchSubmitted] = useState(false);
   const [windowSize, setWindowSize] = useState(getWindowSize());
+
   // Sidebar width
   const drawerWidth = 240;
 
@@ -71,7 +72,12 @@ const App = () => {
                 : "100%",
           }}
         >
-          <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <SearchForm
               searchValue={searchValue}
               setSearchValue={setSearchValue}

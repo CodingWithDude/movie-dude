@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ListSubheader from "@mui/material/ListSubheader";
-import { Drawer, styled } from "@mui/material";
+import { Drawer, styled, Box } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
@@ -176,55 +176,57 @@ const Sidebar = ({ windowLength, drawerWidth, setMovies }) => {
       >
         <Typography>MovieDude</Typography>
       </Toolbar>
-      <List
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            Categories
-          </ListSubheader>
-        }
-      >
-        {categoryItems.map((item) => (
-          <ListItem
-            onClick={() => getCategoryRequest(item.id)}
-            key={item.text}
-            button
-          >
-            <ListItemIcon>
-              <SvgIcon color="primary" fontSize="large">
-                {item.icon}
-              </SvgIcon>
-            </ListItemIcon>
-            <ListItemText primary={item.text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider sx={{ borderBottomWidth: 4 }} />
-      <List
-        component="nav"
-        aria-labelledby="nested-list-subheader"
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            Genres
-          </ListSubheader>
-        }
-      >
-        {genreItems.map((item) => (
-          <ListItem
-            onClick={() => getGenreRequest(item.id)}
-            key={item.text}
-            button
-          >
-            <ListItemIcon>
-              <SvgIcon color="primary" fontSize="large">
-                {item.icon}
-              </SvgIcon>
-            </ListItemIcon>
-            <ListItemText primary={item.text} />
-          </ListItem>
-        ))}
-      </List>
+      <Box>
+        <List
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+          subheader={
+            <ListSubheader component="div" id="nested-list-subheader">
+              Categories
+            </ListSubheader>
+          }
+        >
+          {categoryItems.map((item) => (
+            <ListItem
+              onClick={() => getCategoryRequest(item.id)}
+              key={item.text}
+              button
+            >
+              <ListItemIcon>
+                <SvgIcon color="primary" fontSize="large">
+                  {item.icon}
+                </SvgIcon>
+              </ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider sx={{ borderBottomWidth: 4 }} />
+        <List
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+          subheader={
+            <ListSubheader component="div" id="nested-list-subheader">
+              Genres
+            </ListSubheader>
+          }
+        >
+          {genreItems.map((item) => (
+            <ListItem
+              onClick={() => getGenreRequest(item.id)}
+              key={item.text}
+              button
+            >
+              <ListItemIcon>
+                <SvgIcon color="primary" fontSize="large">
+                  {item.icon}
+                </SvgIcon>
+              </ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     </StyledDrawer>
   );
 };
